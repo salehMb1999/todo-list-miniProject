@@ -1,28 +1,28 @@
-import React, { Component } from "react";
+export default function Todo(props) {
+  return (
+    <div
+      className={`todo ${props.completed && "completed"}`}
+      style={{ display: "flex" }}
+    >
+      <li className="todo-item">{props.title}</li>
 
-export default class Todo extends Component {
-  render() {
-    return (
-      <div
-        className={`todo ${this.props.completed && "completed"}`}
-        style={{ display: "flex" }}
+      <button
+        onClick={() => {
+          props.editTodo(props.id);
+        }}
+        className="check-btn"
       >
-        <li className="todo-item">{this.props.title}</li>
+        <i className="fas fa-check" aria-hidden="true"></i>
+      </button>
 
-        <button
-          onClick={this.props.editTodo.bind(this, this.props.id)}
-          className="check-btn"
-        >
-          <i className="fas fa-check" aria-hidden="true"></i>
-        </button>
-
-        <button
-          onClick={this.props.removeTodo.bind(this, this.props.id)}
-          className="trash-btn"
-        >
-          <i className="fas fa-trash" aria-hidden="true"></i>
-        </button>
-      </div>
-    );
-  }
+      <button
+        onClick={() => {
+          props.removeTodo(props.id);
+        }}
+        className="trash-btn"
+      >
+        <i className="fas fa-trash" aria-hidden="true"></i>
+      </button>
+    </div>
+  );
 }
